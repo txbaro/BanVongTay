@@ -1,53 +1,53 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\VLU\\DALT\\BanVongTay\\",
+  "WorkspaceRootPath": "C:\\VLU\\BanVongTay\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|c:\\vlu\\dalt\\banvongtay\\banvongtay\\controllers\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|solutionrelative:banvongtay\\controllers\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\DALT\\BanVongTay\\banvongtay\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|solutionrelative:banvongtay\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\DALT\\BanVongTay\\banvongtay\\views\\fsanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\BanVongTay\\banvongtay\\views\\fsanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|solutionrelative:banvongtay\\views\\fsanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\DALT\\BanVongTay\\banvongtay\\views\\fsanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\BanVongTay\\banvongtay\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|solutionrelative:banvongtay\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|c:\\vlu\\banvongtay\\banvongtay\\controllers\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|solutionrelative:banvongtay\\controllers\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\BanVongTay\\banvongtay\\views\\fsanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|solutionrelative:banvongtay\\views\\fsanpham.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\DALT\\BanVongTay\\banvongtay\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\BanVongTay\\banvongtay\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|solutionrelative:banvongtay\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\DALT\\BanVongTay\\banvongtay\\fmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\BanVongTay\\banvongtay\\fmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|solutionrelative:banvongtay\\fmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\DALT\\BanVongTay\\banvongtay\\models\\orders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\BanVongTay\\banvongtay\\models\\orders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|solutionrelative:banvongtay\\models\\orders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\DALT\\BanVongTay\\banvongtay\\models\\orderdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\BanVongTay\\banvongtay\\models\\orderdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|solutionrelative:banvongtay\\models\\orderdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\DALT\\BanVongTay\\banvongtay\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\BanVongTay\\banvongtay\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|solutionrelative:banvongtay\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\DALT\\BanVongTay\\banvongtay\\models\\producttypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\BanVongTay\\banvongtay\\models\\producttypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|solutionrelative:banvongtay\\models\\producttypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\DALT\\BanVongTay\\banvongtay\\views\\fkhachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\BanVongTay\\banvongtay\\views\\fkhachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|solutionrelative:banvongtay\\views\\fkhachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\DALT\\BanVongTay\\banvongtay\\fmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|C:\\VLU\\BanVongTay\\banvongtay\\fmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C9901CEE-86D7-463A-9BF1-E4C37F0D8412}|BanVongTay\\BanVongTay.csproj|solutionrelative:banvongtay\\fmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -58,15 +58,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 354,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Program.cs",
+              "DocumentMoniker": "C:\\VLU\\BanVongTay\\BanVongTay\\Program.cs",
               "RelativeDocumentMoniker": "BanVongTay\\Program.cs",
-              "ToolTip": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Program.cs",
+              "ToolTip": "C:\\VLU\\BanVongTay\\BanVongTay\\Program.cs",
               "RelativeToolTip": "BanVongTay\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -77,9 +77,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "FMain.cs",
-              "DocumentMoniker": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\FMain.cs",
+              "DocumentMoniker": "C:\\VLU\\BanVongTay\\BanVongTay\\FMain.cs",
               "RelativeDocumentMoniker": "BanVongTay\\FMain.cs",
-              "ToolTip": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\FMain.cs",
+              "ToolTip": "C:\\VLU\\BanVongTay\\BanVongTay\\FMain.cs",
               "RelativeToolTip": "BanVongTay\\FMain.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAlwEgAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -90,9 +90,9 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Orders.cs",
-              "DocumentMoniker": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Models\\Orders.cs",
+              "DocumentMoniker": "C:\\VLU\\BanVongTay\\BanVongTay\\Models\\Orders.cs",
               "RelativeDocumentMoniker": "BanVongTay\\Models\\Orders.cs",
-              "ToolTip": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Models\\Orders.cs",
+              "ToolTip": "C:\\VLU\\BanVongTay\\BanVongTay\\Models\\Orders.cs",
               "RelativeToolTip": "BanVongTay\\Models\\Orders.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -102,9 +102,9 @@
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "OrderDetails.cs",
-              "DocumentMoniker": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Models\\OrderDetails.cs",
+              "DocumentMoniker": "C:\\VLU\\BanVongTay\\BanVongTay\\Models\\OrderDetails.cs",
               "RelativeDocumentMoniker": "BanVongTay\\Models\\OrderDetails.cs",
-              "ToolTip": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Models\\OrderDetails.cs",
+              "ToolTip": "C:\\VLU\\BanVongTay\\BanVongTay\\Models\\OrderDetails.cs",
               "RelativeToolTip": "BanVongTay\\Models\\OrderDetails.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -114,44 +114,47 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "FSanPham.cs",
-              "DocumentMoniker": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Views\\FSanPham.cs",
+              "DocumentMoniker": "C:\\VLU\\BanVongTay\\BanVongTay\\Views\\FSanPham.cs",
               "RelativeDocumentMoniker": "BanVongTay\\Views\\FSanPham.cs",
-              "ToolTip": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Views\\FSanPham.cs",
+              "ToolTip": "C:\\VLU\\BanVongTay\\BanVongTay\\Views\\FSanPham.cs",
               "RelativeToolTip": "BanVongTay\\Views\\FSanPham.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAkwF8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T13:43:07.763Z"
+              "WhenOpened": "2025-05-28T13:43:07.763Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "FSanPham.cs [Design]",
-              "DocumentMoniker": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Views\\FSanPham.cs",
+              "DocumentMoniker": "C:\\VLU\\BanVongTay\\BanVongTay\\Views\\FSanPham.cs",
               "RelativeDocumentMoniker": "BanVongTay\\Views\\FSanPham.cs",
-              "ToolTip": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Views\\FSanPham.cs [Design]",
+              "ToolTip": "C:\\VLU\\BanVongTay\\BanVongTay\\Views\\FSanPham.cs [Design]",
               "RelativeToolTip": "BanVongTay\\Views\\FSanPham.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-28T08:41:29.528Z"
+              "WhenOpened": "2025-05-28T08:41:29.528Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Products.cs",
-              "DocumentMoniker": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Models\\Products.cs",
+              "DocumentMoniker": "C:\\VLU\\BanVongTay\\BanVongTay\\Models\\Products.cs",
               "RelativeDocumentMoniker": "BanVongTay\\Models\\Products.cs",
-              "ToolTip": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Models\\Products.cs",
+              "ToolTip": "C:\\VLU\\BanVongTay\\BanVongTay\\Models\\Products.cs",
               "RelativeToolTip": "BanVongTay\\Models\\Products.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-04T03:53:15.353Z"
+              "WhenOpened": "2025-06-04T03:53:15.353Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Products.cs",
-              "DocumentMoniker": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Controllers\\Products.cs",
+              "DocumentMoniker": "C:\\VLU\\BanVongTay\\BanVongTay\\Controllers\\Products.cs",
               "RelativeDocumentMoniker": "BanVongTay\\Controllers\\Products.cs",
-              "ToolTip": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Controllers\\Products.cs",
+              "ToolTip": "C:\\VLU\\BanVongTay\\BanVongTay\\Controllers\\Products.cs",
               "RelativeToolTip": "BanVongTay\\Controllers\\Products.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAowCkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -162,9 +165,9 @@
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "Users.cs",
-              "DocumentMoniker": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Models\\Users.cs",
+              "DocumentMoniker": "C:\\VLU\\BanVongTay\\BanVongTay\\Models\\Users.cs",
               "RelativeDocumentMoniker": "BanVongTay\\Models\\Users.cs",
-              "ToolTip": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Models\\Users.cs",
+              "ToolTip": "C:\\VLU\\BanVongTay\\BanVongTay\\Models\\Users.cs",
               "RelativeToolTip": "BanVongTay\\Models\\Users.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -174,9 +177,9 @@
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "ProductTypes.cs",
-              "DocumentMoniker": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Models\\ProductTypes.cs",
+              "DocumentMoniker": "C:\\VLU\\BanVongTay\\BanVongTay\\Models\\ProductTypes.cs",
               "RelativeDocumentMoniker": "BanVongTay\\Models\\ProductTypes.cs",
-              "ToolTip": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Models\\ProductTypes.cs",
+              "ToolTip": "C:\\VLU\\BanVongTay\\BanVongTay\\Models\\ProductTypes.cs",
               "RelativeToolTip": "BanVongTay\\Models\\ProductTypes.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -186,10 +189,10 @@
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "FKhachHang.cs [Design]",
-              "DocumentMoniker": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Views\\FKhachHang.cs",
+              "DocumentMoniker": "C:\\VLU\\BanVongTay\\BanVongTay\\Views\\FKhachHang.cs",
               "RelativeDocumentMoniker": "BanVongTay\\Views\\FKhachHang.cs",
               "ToolTip": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\Views\\FKhachHang.cs [Design]",
-              "RelativeToolTip": "BanVongTay\\Views\\FKhachHang.cs [Design]",
+              "RelativeToolTip": "..\\DALT\\BanVongTay\\BanVongTay\\Views\\FKhachHang.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-28T14:10:25.004Z"
             },
@@ -197,10 +200,10 @@
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "FMain.cs [Design]",
-              "DocumentMoniker": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\FMain.cs",
+              "DocumentMoniker": "C:\\VLU\\BanVongTay\\BanVongTay\\FMain.cs",
               "RelativeDocumentMoniker": "BanVongTay\\FMain.cs",
               "ToolTip": "C:\\VLU\\DALT\\BanVongTay\\BanVongTay\\FMain.cs [Design]",
-              "RelativeToolTip": "BanVongTay\\FMain.cs [Design]",
+              "RelativeToolTip": "..\\DALT\\BanVongTay\\BanVongTay\\FMain.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-28T08:37:01.937Z"
             }
