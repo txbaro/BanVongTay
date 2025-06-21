@@ -5,9 +5,9 @@ using System.Data.SqlClient;
 
 namespace BanVongTay.Controllers
 {
-    internal class ConnectDB
+    public class ConnectDB
     {
-        private readonly string connectionString = "Server=TB7;Database=LaeliaDB;Trusted_Connection=True;";
+        private readonly string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=BraceletShop;Trusted_Connection=True;";
         private SqlConnection connection;
 
         public ConnectDB()
@@ -17,8 +17,15 @@ namespace BanVongTay.Controllers
 
         public void OpenConnection()
         {
-            if (connection.State == ConnectionState.Closed)
-                connection.Open();
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception($"Lỗi kết nối cơ sở dữ liệu: {ex.Message}");
+            }
         }
 
         public void CloseConnection()
@@ -27,16 +34,27 @@ namespace BanVongTay.Controllers
                 connection.Close();
         }
 
-
-        public DataTable ExecuteQuery(string query)
+        public DataTable ExecuteQuery(string query, Dictionary<string, object> parameters)
         {
             DataTable dt = new DataTable();
             try
             {
                 OpenConnection();
-                SqlCommand cmd = new SqlCommand(query, connection);
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    foreach (var param in parameters)
+                    {
+                        cmd.Parameters.AddWithValue(param.Key, param.Value ?? (object)DBNull.Value);
+                    }
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dt);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi thực thi truy vấn: {ex.Message}");
             }
             finally
             {
@@ -45,20 +63,9 @@ namespace BanVongTay.Controllers
             return dt;
         }
 
-        public int ExecuteNonQuery(string query)
+        public DataTable ExecuteQuery(string query)
         {
-            int result = 0;
-            try
-            {
-                OpenConnection();
-                SqlCommand cmd = new SqlCommand(query, connection);
-                result = cmd.ExecuteNonQuery();
-            }
-            finally
-            {
-                CloseConnection();
-            }
-            return result;
+            return ExecuteQuery(query, new Dictionary<string, object>());
         }
 
         public int ExecuteNonQuery(string query, Dictionary<string, object> parameters)
@@ -67,12 +74,44 @@ namespace BanVongTay.Controllers
             try
             {
                 OpenConnection();
-                SqlCommand cmd = new SqlCommand(query, connection);
-                foreach (var param in parameters)
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    cmd.Parameters.AddWithValue(param.Key, param.Value);
+                    foreach (var param in parameters)
+                    {
+                        cmd.Parameters.AddWithValue(param.Key, param.Value ?? (object)DBNull.Value);
+                    }
+                    result = cmd.ExecuteNonQuery();
                 }
-                result = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi thực thi NonQuery: {ex.Message}");
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return result;
+        }
+
+        public object ExecuteScalar(string query, Dictionary<string, object> parameters)
+        {
+            object result = null;
+            try
+            {
+                OpenConnection();
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    foreach (var param in parameters)
+                    {
+                        cmd.Parameters.AddWithValue(param.Key, param.Value ?? (object)DBNull.Value);
+                    }
+                    result = cmd.ExecuteScalar();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi thực thi Scalar: {ex.Message}");
             }
             finally
             {

@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FSanPham));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbCategories = new System.Windows.Forms.ComboBox();
             this.btnUploadImage = new System.Windows.Forms.Button();
             this.txtQuantity = new System.Windows.Forms.TextBox();
             this.lblSoLuong = new System.Windows.Forms.Label();
             this.txtUnitPrice = new System.Windows.Forms.TextBox();
-            this.txtProductType = new System.Windows.Forms.TextBox();
             this.lblDonGia = new System.Windows.Forms.Label();
             this.lblLoaiSP = new System.Windows.Forms.Label();
             this.lblTenSP = new System.Windows.Forms.Label();
@@ -48,7 +48,10 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.pbProductImg = new System.Windows.Forms.PictureBox();
-            this.txtImagePath = new System.Windows.Forms.TextBox();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.cbTimKiem = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDSSP)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -58,12 +61,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtImagePath);
+            this.groupBox1.Controls.Add(this.cbCategories);
             this.groupBox1.Controls.Add(this.btnUploadImage);
             this.groupBox1.Controls.Add(this.txtQuantity);
             this.groupBox1.Controls.Add(this.lblSoLuong);
             this.groupBox1.Controls.Add(this.txtUnitPrice);
-            this.groupBox1.Controls.Add(this.txtProductType);
             this.groupBox1.Controls.Add(this.lblDonGia);
             this.groupBox1.Controls.Add(this.lblLoaiSP);
             this.groupBox1.Controls.Add(this.lblTenSP);
@@ -73,16 +75,24 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(843, 330);
+            this.groupBox1.Size = new System.Drawing.Size(843, 301);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "THÔNG TIN SẢN PHẨM";
+            // 
+            // cbCategories
+            // 
+            this.cbCategories.FormattingEnabled = true;
+            this.cbCategories.Location = new System.Drawing.Point(587, 53);
+            this.cbCategories.Name = "cbCategories";
+            this.cbCategories.Size = new System.Drawing.Size(236, 33);
+            this.cbCategories.TabIndex = 15;
             // 
             // btnUploadImage
             // 
             this.btnUploadImage.Image = ((System.Drawing.Image)(resources.GetObject("btnUploadImage.Image")));
             this.btnUploadImage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUploadImage.Location = new System.Drawing.Point(467, 251);
+            this.btnUploadImage.Location = new System.Drawing.Point(543, 224);
             this.btnUploadImage.Name = "btnUploadImage";
             this.btnUploadImage.Size = new System.Drawing.Size(201, 50);
             this.btnUploadImage.TabIndex = 13;
@@ -94,16 +104,17 @@
             // txtQuantity
             // 
             this.txtQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantity.Location = new System.Drawing.Point(160, 263);
+            this.txtQuantity.Location = new System.Drawing.Point(160, 236);
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(157, 38);
             this.txtQuantity.TabIndex = 12;
+            this.txtQuantity.TextChanged += new System.EventHandler(this.txtQuantity_TextChanged);
             // 
             // lblSoLuong
             // 
             this.lblSoLuong.AutoSize = true;
             this.lblSoLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSoLuong.Location = new System.Drawing.Point(19, 263);
+            this.lblSoLuong.Location = new System.Drawing.Point(19, 238);
             this.lblSoLuong.Name = "lblSoLuong";
             this.lblSoLuong.Size = new System.Drawing.Size(135, 36);
             this.lblSoLuong.TabIndex = 11;
@@ -112,25 +123,16 @@
             // txtUnitPrice
             // 
             this.txtUnitPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnitPrice.Location = new System.Drawing.Point(604, 162);
+            this.txtUnitPrice.Location = new System.Drawing.Point(604, 148);
             this.txtUnitPrice.Name = "txtUnitPrice";
             this.txtUnitPrice.Size = new System.Drawing.Size(219, 34);
             this.txtUnitPrice.TabIndex = 10;
-            // 
-            // txtProductType
-            // 
-            this.txtProductType.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductType.Location = new System.Drawing.Point(587, 55);
-            this.txtProductType.Name = "txtProductType";
-            this.txtProductType.Size = new System.Drawing.Size(236, 34);
-            this.txtProductType.TabIndex = 9;
-            this.txtProductType.TextChanged += new System.EventHandler(this.txtProductType_TextChanged);
             // 
             // lblDonGia
             // 
             this.lblDonGia.AutoSize = true;
             this.lblDonGia.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDonGia.Location = new System.Drawing.Point(480, 161);
+            this.lblDonGia.Location = new System.Drawing.Point(480, 145);
             this.lblDonGia.Name = "lblDonGia";
             this.lblDonGia.Size = new System.Drawing.Size(118, 36);
             this.lblDonGia.TabIndex = 8;
@@ -150,7 +152,7 @@
             // 
             this.lblTenSP.AutoSize = true;
             this.lblTenSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenSP.Location = new System.Drawing.Point(9, 162);
+            this.lblTenSP.Location = new System.Drawing.Point(9, 145);
             this.lblTenSP.Name = "lblTenSP";
             this.lblTenSP.Size = new System.Drawing.Size(114, 36);
             this.lblTenSP.TabIndex = 6;
@@ -159,13 +161,14 @@
             // txtProductName
             // 
             this.txtProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProductName.Location = new System.Drawing.Point(129, 164);
+            this.txtProductName.Location = new System.Drawing.Point(129, 147);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(328, 34);
             this.txtProductName.TabIndex = 5;
             // 
             // txtProductID
             // 
+            this.txtProductID.Enabled = false;
             this.txtProductID.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductID.Location = new System.Drawing.Point(129, 53);
             this.txtProductID.Name = "txtProductID";
@@ -185,7 +188,7 @@
             // dtgvDSSP
             // 
             this.dtgvDSSP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvDSSP.Location = new System.Drawing.Point(12, 367);
+            this.dtgvDSSP.Location = new System.Drawing.Point(12, 412);
             this.dtgvDSSP.Name = "dtgvDSSP";
             this.dtgvDSSP.RowHeadersWidth = 51;
             this.dtgvDSSP.RowTemplate.Height = 24;
@@ -215,6 +218,7 @@
             this.btnSua.TabIndex = 2;
             this.btnSua.Text = "SỬA";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnXoa
             // 
@@ -225,6 +229,7 @@
             this.btnXoa.TabIndex = 1;
             this.btnXoa.Text = "XOÁ";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnThem
             // 
@@ -257,18 +262,54 @@
             this.pbProductImg.TabStop = false;
             this.pbProductImg.Click += new System.EventHandler(this.pbProductImg_Click);
             // 
-            // txtImagePath
+            // txtTimKiem
             // 
-            this.txtImagePath.Location = new System.Drawing.Point(692, 263);
-            this.txtImagePath.Name = "txtImagePath";
-            this.txtImagePath.Size = new System.Drawing.Size(100, 30);
-            this.txtImagePath.TabIndex = 14;
+            this.txtTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimKiem.Location = new System.Drawing.Point(331, 340);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(361, 34);
+            this.txtTimKiem.TabIndex = 4;
+            // 
+            // cbTimKiem
+            // 
+            this.cbTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTimKiem.FormattingEnabled = true;
+            this.cbTimKiem.Location = new System.Drawing.Point(172, 340);
+            this.cbTimKiem.Name = "cbTimKiem";
+            this.cbTimKiem.Size = new System.Drawing.Size(147, 33);
+            this.cbTimKiem.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(21, 337);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 36);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Tìm kiếm";
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimKiem.Location = new System.Drawing.Point(698, 335);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(157, 46);
+            this.btnTimKiem.TabIndex = 3;
+            this.btnTimKiem.Text = "TÌM KIẾM";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // FSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1569, 834);
+            this.ClientSize = new System.Drawing.Size(1382, 834);
+            this.ControlBox = false;
+            this.Controls.Add(this.btnTimKiem);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbTimKiem);
+            this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dtgvDSSP);
@@ -282,6 +323,7 @@
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbProductImg)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -297,7 +339,6 @@
         private System.Windows.Forms.DataGridView dtgvDSSP;
         private System.Windows.Forms.Label lblSoLuong;
         private System.Windows.Forms.TextBox txtUnitPrice;
-        private System.Windows.Forms.TextBox txtProductType;
         private System.Windows.Forms.TextBox txtQuantity;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnSua;
@@ -306,6 +347,10 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnUploadImage;
         private System.Windows.Forms.PictureBox pbProductImg;
-        private System.Windows.Forms.TextBox txtImagePath;
+        private System.Windows.Forms.ComboBox cbCategories;
+        private System.Windows.Forms.TextBox txtTimKiem;
+        private System.Windows.Forms.ComboBox cbTimKiem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnTimKiem;
     }
 }

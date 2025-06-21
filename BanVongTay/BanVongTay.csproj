@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ConnectDB.cs" />
-    <Compile Include="Controllers\Products.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\OrderDetailsController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="FMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,13 +57,17 @@
       <DependentUpon>FMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderDetails.cs" />
-    <Compile Include="Models\Orders.cs" />
-    <Compile Include="Models\Payments.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Products.cs" />
-    <Compile Include="Models\ProductTypes.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\FHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FHoaDon.Designer.cs">
+      <DependentUpon>FHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\FHoaDon.resx">
+      <DependentUpon>FHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FKhachHang.resx">
       <DependentUpon>FKhachHang.cs</DependentUpon>
     </EmbeddedResource>

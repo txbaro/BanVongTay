@@ -36,6 +36,7 @@
             this.lblThongTinTrang = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.picClose = new System.Windows.Forms.PictureBox();
+            this.btnHoaDon = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -45,6 +46,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.btnHoaDon);
             this.panel1.Controls.Add(this.btnSanPham);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -68,9 +70,9 @@
             // 
             // panelDisplayForm
             // 
-            this.panelDisplayForm.Location = new System.Drawing.Point(320, 125);
+            this.panelDisplayForm.Location = new System.Drawing.Point(320, 89);
             this.panelDisplayForm.Name = "panelDisplayForm";
-            this.panelDisplayForm.Size = new System.Drawing.Size(1597, 950);
+            this.panelDisplayForm.Size = new System.Drawing.Size(1597, 986);
             this.panelDisplayForm.TabIndex = 2;
             this.panelDisplayForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDisplayForm_Paint);
             // 
@@ -82,14 +84,14 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(314, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1406, 119);
+            this.panel2.Size = new System.Drawing.Size(1406, 83);
             this.panel2.TabIndex = 3;
             // 
             // lblThongTinTrang
             // 
             this.lblThongTinTrang.AutoSize = true;
             this.lblThongTinTrang.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThongTinTrang.Location = new System.Drawing.Point(6, 57);
+            this.lblThongTinTrang.Location = new System.Drawing.Point(6, 27);
             this.lblThongTinTrang.Name = "lblThongTinTrang";
             this.lblThongTinTrang.Size = new System.Drawing.Size(258, 46);
             this.lblThongTinTrang.TabIndex = 1;
@@ -112,6 +114,20 @@
             this.picClose.TabIndex = 0;
             this.picClose.TabStop = false;
             this.picClose.Click += new System.EventHandler(this.picClose_Click);
+            // 
+            // btnHoaDon
+            // 
+            this.btnHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHoaDon.Image = ((System.Drawing.Image)(resources.GetObject("btnHoaDon.Image")));
+            this.btnHoaDon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHoaDon.Location = new System.Drawing.Point(46, 446);
+            this.btnHoaDon.Name = "btnHoaDon";
+            this.btnHoaDon.Size = new System.Drawing.Size(223, 69);
+            this.btnHoaDon.TabIndex = 2;
+            this.btnHoaDon.Text = "SẢN PHẨM";
+            this.btnHoaDon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHoaDon.UseVisualStyleBackColor = true;
+            this.btnHoaDon.Click += new System.EventHandler(this.btnHoaDon_Click);
             // 
             // FMain
             // 
@@ -141,6 +157,7 @@
         private System.Windows.Forms.PictureBox picClose;
         private System.Windows.Forms.Button btnSanPham;
         private System.Windows.Forms.Label lblThongTinTrang;
+        private System.Windows.Forms.Button btnHoaDon;
     }
 }
 

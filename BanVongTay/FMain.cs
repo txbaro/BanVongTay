@@ -1,4 +1,6 @@
-﻿using BanVongTay.Views;
+﻿using BanVongTay.Controllers;
+using BanVongTay.Models;
+using BanVongTay.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,16 +24,16 @@ namespace BanVongTay
             this.WindowState = FormWindowState.Normal;
         }
 
-        private void LoadFormIntoPanel(Form form) //LOad Form Ở đây, Giải thích thôi chứ không cần đụng vào đây !
+        private void LoadFormIntoPanel(Form form) 
         {
             if (panelDisplayForm.Controls.Count > 0)
-                panelDisplayForm.Controls[0].Dispose(); // Câu lệnh này chỉ để cấm việc load quá nhiều form 1 lúc 
+                panelDisplayForm.Controls[0].Dispose(); 
 
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
 
-            panelDisplayForm.Controls.Add(form);  // tham chiếu
+            panelDisplayForm.Controls.Add(form);
             panelDisplayForm.Tag = form;
             form.Show();
         }
@@ -67,10 +69,17 @@ namespace BanVongTay
 
         private void btnSanPham_Click(object sender, EventArgs e)
         {
-            FSanPham form = new FSanPham(); // Gọi form mấy ông muốn nhảy qua 
-            LoadFormIntoPanel(form);
-
+            FSanPham form = new FSanPham();
+            LoadFormIntoPanel(form); // Thiếu dòng này nên form không hiển thị
             lblThongTinTrang.Text = "SẢN PHẨM";
+        }
+
+        private void btnHoaDon_Click(object sender, EventArgs e)
+        {
+            FHoaDon form = new FHoaDon();
+            LoadFormIntoPanel(form);
+            form.loadDanhSachHoaDon();   
+            lblThongTinTrang.Text = "HOÁ ĐƠN";
         }
     }
 }
