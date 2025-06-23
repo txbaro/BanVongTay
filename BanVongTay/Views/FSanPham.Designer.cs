@@ -315,6 +315,7 @@
             this.Controls.Add(this.dtgvDSSP);
             this.Controls.Add(this.groupBox1);
             this.Name = "FSanPham";
+            this.Text = "~";
             this.Load += new System.EventHandler(this.FSanPham_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -31,6 +31,8 @@ namespace BanVongTay.Views
                 loadDanhSachHoaDon();
                 cbTimKiem.Items.AddRange(new string[] { "Mã HD", "Tên KH", "Tên NV" });
                 cbTimKiem.SelectedIndex = 0;
+                dtgvHoaDon.ReadOnly = true;
+                dtgvChiTietHoaDon.ReadOnly = true;
             }
             catch (Exception ex)
             {
