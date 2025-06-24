@@ -36,9 +36,9 @@ namespace BanVongTay.Controllers
             {
                 OrderDetails od = new OrderDetails
                 {
-                    OrderDetailID = Convert.ToInt32(row["OrderDetailID"]),
-                    OrderID = Convert.ToInt32(row["OrderID"]),
-                    ProductID = Convert.ToInt32(row["ProductID"]),
+                    OrderDetailID = row["OrderDetailID"].ToString(),
+                    OrderID = row["OrderID"].ToString(),
+                    ProductID = row["ProductID"].ToString(),
                     ProductName = row["ProductName"].ToString(),
                     Quantity = Convert.ToInt32(row["Quantity"]),
                     UnitPrice = Convert.ToDecimal(row["UnitPrice"])

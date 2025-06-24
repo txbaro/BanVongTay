@@ -24,11 +24,11 @@ namespace BanVongTay.Views
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
         }
 
-        private void FHoaDon_Load(object sender, EventArgs e)
+        private async void FHoaDon_Load(object sender, EventArgs e)
         {
             try
             {
-                loadDanhSachHoaDon();
+                await Task.Run(() => loadDanhSachHoaDon());
                 cbTimKiem.Items.AddRange(new string[] { "Mã HD", "Tên KH", "Tên NV" });
                 cbTimKiem.SelectedIndex = 0;
                 dtgvHoaDon.ReadOnly = true;
@@ -40,7 +40,7 @@ namespace BanVongTay.Views
             }
         }
 
-        public void loadDanhSachHoaDon()
+        public async void loadDanhSachHoaDon()
         {
             try
             {
@@ -56,6 +56,7 @@ namespace BanVongTay.Views
                 {
                     dt.Rows.Add(o.OrderID, o.CustomerName, o.UserName, o.TotalAmount, o.OrderDate);
                 }
+
                 dtgvHoaDon.AutoGenerateColumns = true;
                 dtgvHoaDon.DataSource = dt;
 
@@ -63,25 +64,27 @@ namespace BanVongTay.Views
                 dtgvHoaDon.Columns["TenKH"].Width = 200;
                 dtgvHoaDon.Columns["TenNV"].Width = 200;
                 dtgvHoaDon.Columns["TongTien"].Width = 200;
-                dtgvHoaDon.Columns["NgayTao"].Width = 300;
-
-                dtgvHoaDon.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                dtgvHoaDon.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-                dtgvHoaDon.DefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+                dtgvHoaDon.Columns["NgayTao"].Width = 262;
             }
             catch (Exception ex)                
             {
                 MessageBox.Show($"Lỗi khi tải danh sách hóa đơn: {ex.Message}\nStackTrace: {ex.StackTrace}");
             }
         }
-            
+
         private void loadChiTietHoaDon(string maHD)
         {
             try
             {
                 if (string.IsNullOrEmpty(maHD)) return;
 
-                int orderId = Convert.ToInt32(maHD);
+                // Convert maHD from string to int before passing it to GetOrderDetailsByOrderID
+                if (!int.TryParse(maHD, out int orderId))
+                {
+                    MessageBox.Show("Mã hóa đơn không hợp lệ.");
+                    return;
+                }
+
                 List<OrderDetails> details = detailsController.GetOrderDetailsByOrderID(orderId) ?? new List<OrderDetails>();
 
                 DataTable dt = new DataTable();
@@ -103,8 +106,6 @@ namespace BanVongTay.Views
 
                 dtgvChiTietHoaDon.DataSource = dt;
                 txtTongTien.Text = tongTien.ToString("N0");
-
-                orderController.UpdateTotalAmount(orderId, tongTien);
             }
             catch (Exception ex)
             {
@@ -164,21 +165,19 @@ namespace BanVongTay.Views
             {
                 Order newOrder = new Order
                 {
-                    CustomerID = 1,
-                    UserID = 1,  
                     OrderDate = DateTime.Now,
                     TotalAmount = 0
                 };
 
-                int newOrderId = orderController.AddOrder(newOrder);
-                if (newOrderId > 0)
+                string newOrderId = orderController.AddOrder(newOrder);
+                if (!string.IsNullOrEmpty(newOrderId))
                 {
                     MessageBox.Show("Tạo hóa đơn thành công!");
                     loadDanhSachHoaDon();
-                    txtMaHD.Text = newOrderId.ToString();
+                    txtMaHD.Text = newOrderId;
 
                     tabControl1.SelectedTab = tabPage2;
-                    loadChiTietHoaDon(newOrderId.ToString());
+                    loadChiTietHoaDon(newOrderId);
                 }
                 else
                 {
@@ -193,6 +192,25 @@ namespace BanVongTay.Views
 
         private void btnThemSP_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Add product to order details
+                // ...
+
+                // After adding product, update total amount
+                if (!int.TryParse(txtMaHD.Text, out int orderId))
+                {
+                    MessageBox.Show("Mã hóa đơn không hợp lệ.");
+                    return;
+                }
+
+                decimal newTotal = detailsController.CalculateTotalByOrder(orderId);
+                orderController.UpdateTotalAmount(orderId.ToString(), newTotal);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi thêm sản phẩm: {ex.Message}");
+            }
         }
 
         private void dtgvHoaDon_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -202,6 +220,25 @@ namespace BanVongTay.Views
 
         private void btnLuuHoaDon_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Save order details
+                // ...
+
+                // After saving order details, update total amount
+                if (!int.TryParse(txtMaHD.Text, out int orderId))
+                {
+                    MessageBox.Show("Mã hóa đơn không hợp lệ.");
+                    return;
+                }
+
+                decimal newTotal = detailsController.CalculateTotalByOrder(orderId);
+                orderController.UpdateTotalAmount(orderId.ToString(), newTotal);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lưu hóa đơn: {ex.Message}");
+            }
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -214,6 +251,11 @@ namespace BanVongTay.Views
             {
                 loadChiTietHoaDon(txtMaHD.Text);
             }
+        }
+
+        private void cbTimKiem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

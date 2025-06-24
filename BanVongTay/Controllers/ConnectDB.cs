@@ -119,5 +119,10 @@ namespace BanVongTay.Controllers
             }
             return result;
         }
+
+        public object ExecuteScalar(string query)
+        {
+            return ExecuteScalar(query, new Dictionary<string, object>());
+        }
     }
 }

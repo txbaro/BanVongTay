@@ -51,7 +51,7 @@ namespace BanVongTay.Views
             dtgvDSSP.Columns["ProductID"].Width = 80;
             dtgvDSSP.Columns["ProductName"].Width = 200;
             dtgvDSSP.Columns["Price"].Width = 90;
-            dtgvDSSP.Columns["Quantity"].Width = 80;
+            dtgvDSSP.Columns["Quantity"].Width = 75;
         }
 
         private void loadSearchOption()
@@ -155,27 +155,9 @@ namespace BanVongTay.Views
                     return;
                 }
 
-                if (!isTextOnly(txtProductName.Text))
-                {
-                    MessageBox.Show("Tên sản phẩm chỉ được chứa chữ cái và khoảng trắng.");
-                    return;
-                }
-
                 if (!isTextOnly(cbCategories.Text))
                 {
                     MessageBox.Show("Loại vòng chỉ được chứa chữ cái.");
-                    return;
-                }
-
-                if (!decimal.TryParse(txtUnitPrice.Text, out price))
-                {
-                    MessageBox.Show("Giá không hợp lệ! Chỉ được nhập số.");
-                    return;
-                }
-
-                if (!int.TryParse(txtQuantity.Text, out quantity))
-                {
-                    MessageBox.Show("Số lượng không hợp lệ! Chỉ được nhập số nguyên.");
                     return;
                 }
 
@@ -184,7 +166,7 @@ namespace BanVongTay.Views
                 currentProduct.Quantity = quantity;
                 currentProduct.ImageURL = pbProductImg.ImageLocation;
                 currentProduct.CategoryName = cbCategories.Text;
-
+                currentProduct.ProductID = txtProductID.Text;
 
                 bool result = false;
 
@@ -195,7 +177,6 @@ namespace BanVongTay.Views
                 }
                 else if (isEditing)
                 {
-                    currentProduct.ProductID = int.Parse(txtProductID.Text);
                     result = productController.UpdateProduct(currentProduct);
                     MessageBox.Show(result ? "Cập nhật thành công!" : "Cập nhật thất bại.");
                 }
@@ -230,11 +211,11 @@ namespace BanVongTay.Views
                 return;
             }
 
-            int id = int.Parse(txtProductID.Text);
+            string id = txtProductID.Text;
             DialogResult dialog = MessageBox.Show("Bạn có chắc muốn xoá?", "Xác nhận", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
-                bool result = productController.DeleteProduct(id);
+                bool result = productController.DeleteProduct(id);  
                 MessageBox.Show(result ? "Xoá thành công!" : "Xoá thất bại.");
                 loadProductList();
             }
@@ -327,3 +308,4 @@ namespace BanVongTay.Views
         }
     }
 }
+
