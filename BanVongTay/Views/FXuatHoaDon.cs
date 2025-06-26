@@ -14,8 +14,9 @@ namespace BanVongTay.Views
     {
         public FXuatHoaDon(string hoaDonText)
         {
-            this.ClientSize = new System.Drawing.Size(800, 550);
             InitializeComponent();
+            rtbHoaDon.Font = new Font("Consolas", 10);
+            rtbHoaDon.ReadOnly = true;
             rtbHoaDon.Text = hoaDonText;
         }
 

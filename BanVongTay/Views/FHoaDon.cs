@@ -198,16 +198,16 @@ namespace BanVongTay.Views
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine("         CỬA HÀNG VÒNG TAY PHONG THỦY");
-            sb.AppendLine("             *** HÓA ĐƠN BÁN HÀNG ***");
+            sb.AppendLine("                         BraceletStore");
+            sb.AppendLine("                    *** HÓA ĐƠN BÁN HÀNG ***");
             sb.AppendLine();
             sb.AppendLine($"Mã HĐ      : {txtMaHD.Text}");
             sb.AppendLine($"Khách hàng : {txtTenKH.Text}");
             sb.AppendLine($"Nhân viên  : {txtTenNV.Text}");
             sb.AppendLine($"Ngày lập   : {dtpNgayLap.Value:dd/MM/yyyy}");
-            sb.AppendLine(new string('-', 60));
-            sb.AppendLine("Mã SP  | Tên sản phẩm         | Đơn giá  | SL | Thành tiền");
-            sb.AppendLine(new string('-', 60));
+            sb.AppendLine(new string('-', 63));
+            sb.AppendLine("Mã SP  | Tên sản phẩm        | Đơn giá | SL | Thành tiền");
+            sb.AppendLine(new string('-', 63));
 
             foreach (ListViewItem item in listViewChiTietHD.Items)
             {
@@ -227,10 +227,10 @@ namespace BanVongTay.Views
                     thanhTien));
             }
 
-            sb.AppendLine(new string('-', 60));
+            sb.AppendLine(new string('-', 63));
             sb.AppendLine($"TỔNG TIỀN: {txtThanhTien.Text} đ");
-            sb.AppendLine(new string('=', 60));
-            sb.AppendLine("     Cảm ơn quý khách và hẹn gặp lại!");
+            sb.AppendLine(new string('=', 63));
+            sb.AppendLine("                     Cảm ơn quý khách và hẹn gặp lại!");
 
             var frm = new FXuatHoaDon(sb.ToString());
             frm.ShowDialog();

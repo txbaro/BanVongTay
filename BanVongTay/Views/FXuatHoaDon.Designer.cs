@@ -36,7 +36,7 @@
             // 
             this.rtbHoaDon.Location = new System.Drawing.Point(-1, -1);
             this.rtbHoaDon.Name = "rtbHoaDon";
-            this.rtbHoaDon.Size = new System.Drawing.Size(556, 624);
+            this.rtbHoaDon.Size = new System.Drawing.Size(600, 624);
             this.rtbHoaDon.TabIndex = 0;
             this.rtbHoaDon.Text = "";
             // 
@@ -55,12 +55,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 692);
+            this.ClientSize = new System.Drawing.Size(597, 692);
             this.ControlBox = false;
             this.Controls.Add(this.btnXuatHoaDon);
             this.Controls.Add(this.rtbHoaDon);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FXuatHoaDon";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FXuatHoaDon";
             this.Load += new System.EventHandler(this.FXuatHoaDon_Load);
             this.ResumeLayout(false);
