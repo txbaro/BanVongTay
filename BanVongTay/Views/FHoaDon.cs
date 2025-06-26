@@ -230,7 +230,7 @@ namespace BanVongTay.Views
             sb.AppendLine(new string('-', 63));
             sb.AppendLine($"TỔNG TIỀN: {txtThanhTien.Text} đ");
             sb.AppendLine(new string('=', 63));
-            sb.AppendLine("                     Cảm ơn quý khách và hẹn gặp lại!");
+            sb.AppendLine("                  Cảm ơn quý khách và hẹn gặp lại!");
 
             var frm = new FXuatHoaDon(sb.ToString());
             frm.ShowDialog();
