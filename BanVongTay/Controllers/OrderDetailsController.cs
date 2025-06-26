@@ -14,7 +14,7 @@ namespace BanVongTay.Controllers
             db = new ConnectDB();
         }
 
-        public List<OrderDetails> GetOrderDetailsByOrderID(int orderId)
+        public List<OrderDetails> GetOrderDetailsByOrderID(string orderId)
         {
             List<OrderDetails> list = new List<OrderDetails>();
 
@@ -66,7 +66,7 @@ namespace BanVongTay.Controllers
             return db.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        public bool DeleteOrderDetail(int orderDetailId)
+        public bool DeleteOrderDetail(string orderDetailId)
         {
             string query = "DELETE FROM OrderDetails WHERE OrderDetailID = @id";
             var parameters = new Dictionary<string, object>
@@ -77,7 +77,7 @@ namespace BanVongTay.Controllers
             return db.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        public bool DeleteAllDetailsByOrder(int orderId)
+        public bool DeleteAllDetailsByOrder(string orderId)
         {
             string query = "DELETE FROM OrderDetails WHERE OrderID = @orderId";
             var parameters = new Dictionary<string, object>
@@ -88,7 +88,7 @@ namespace BanVongTay.Controllers
             return db.ExecuteNonQuery(query, parameters) > 0;
         }
 
-        public decimal CalculateTotalByOrder(int orderId)
+        public decimal CalculateTotalByOrder(string orderId)
         {
             string query = "SELECT SUM(Quantity * UnitPrice) FROM OrderDetails WHERE OrderID = @orderId";
             var parameters = new Dictionary<string, object>

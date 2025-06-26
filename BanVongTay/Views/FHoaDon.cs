@@ -14,248 +14,227 @@ namespace BanVongTay.Views
 {
     public partial class FHoaDon : Form
     {
-        private OrderController orderController = new OrderController();
-        private OrderDetailsController detailsController = new OrderDetailsController();
-
         public FHoaDon()
         {
             InitializeComponent();
-            this.dtgvHoaDon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvHoaDon_CellContentClick);
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            dtgvHoaDonPart1.RowHeadersVisible = false;
+            dtgvHoaDonPart2.RowHeadersVisible = false;
         }
 
-        private async void FHoaDon_Load(object sender, EventArgs e)
+        private void loadHoaDon()
         {
-            try
+            OrderController orderController = new OrderController();
+            List<Order> orders = orderController.GetAllOrders();
+
+            dtgvHoaDonPart1.DataSource = orders;
+            dtgvHoaDonPart2.DataSource = orders;
+
+            dtgvHoaDonPart1.Font = new Font("Segoe UI", 10F);
+            dtgvHoaDonPart2.Font = new Font("Segoe UI", 10F);
+            dtgvHoaDonPart1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtgvHoaDonPart2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            setColumnHeaders(dtgvHoaDonPart1);
+            setColumnHeaders(dtgvHoaDonPart2);
+
+            dtgvHoaDonPart1.Columns["OrderID"].Width = 50;
+            dtgvHoaDonPart1.Columns["UserName"].Width = 60;
+            dtgvHoaDonPart1.Columns["OrderDate"].Width = 80;
+
+            dtgvHoaDonPart2.Columns["CustomerID"].Width = 60;
+            dtgvHoaDonPart2.Columns["CustomerName"].Width = 70;
+            dtgvHoaDonPart2.Columns["TotalAmount"].Width = 70;
+
+            // Ẩn cột ở bảng 1: chỉ để lại Mã HD, Tên NV, Ngày lập
+            dtgvHoaDonPart1.Columns["CustomerID"].Visible = false;
+            dtgvHoaDonPart1.Columns["CustomerName"].Visible = false;
+            dtgvHoaDonPart1.Columns["TotalAmount"].Visible = false;
+
+            // Ẩn cột ở bảng 2: chỉ để lại Mã KH, Tên KH, Thành tiền
+            dtgvHoaDonPart2.Columns["OrderID"].Visible = false;
+            dtgvHoaDonPart2.Columns["UserName"].Visible = false;
+            dtgvHoaDonPart2.Columns["OrderDate"].Visible = false;
+
+            // Ẩn thêm các cột phụ
+            dtgvHoaDonPart1.Columns["UserID"].Visible = false;
+            dtgvHoaDonPart2.Columns["UserID"].Visible = false;
+        }
+
+        private void loadChiTietHoaDon(string orderId)
+        {
+            OrderDetailsController controller = new OrderDetailsController();
+            var details = controller.GetOrderDetailsByOrderID(orderId);
+
+            listViewChiTietHD.Items.Clear();
+
+            foreach (var d in details)
             {
-                await Task.Run(() => loadDanhSachHoaDon());
-                cbTimKiem.Items.AddRange(new string[] { "Mã HD", "Tên KH", "Tên NV" });
-                cbTimKiem.SelectedIndex = 0;
-                dtgvHoaDon.ReadOnly = true;
-                dtgvChiTietHoaDon.ReadOnly = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi tải dữ liệu: {ex.Message}");
+                var item = new ListViewItem(d.ProductID);
+                item.SubItems.Add(d.ProductName);
+                item.SubItems.Add(d.UnitPrice.ToString("N0"));
+                item.SubItems.Add(d.Quantity.ToString());
+                item.SubItems.Add((d.Quantity * d.UnitPrice).ToString("N0"));
+                listViewChiTietHD.Items.Add(item);
             }
         }
 
-        public async void loadDanhSachHoaDon()
+        private void setColumnHeaders(DataGridView dgv)
         {
-            try
+            dgv.Columns["OrderID"].HeaderText = "Mã HD";
+            dgv.Columns["CustomerName"].HeaderText = "Tên KH";
+            dgv.Columns["CustomerID"].HeaderText = "Mã KH";
+            dgv.Columns["UserName"].HeaderText = "Tên NV";
+            dgv.Columns["OrderDate"].HeaderText = "Ngày lập";
+            dgv.Columns["TotalAmount"].HeaderText = "Thành tiền";
+
+            dgv.Columns["OrderDate"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dgv.Columns["TotalAmount"].DefaultCellStyle.Format = "N0";
+        }
+
+
+        private void FHoaDon_Load(object sender, EventArgs e)
+        {
+            loadHoaDon();
+            dtgvHoaDonPart1.CellClick += dgvHoaDon_CellClick;
+            dtgvHoaDonPart2.CellClick += dgvHoaDon_CellClick;
+
+            listViewChiTietHD.Clear();
+
+            listViewChiTietHD.View = View.Details;
+            listViewChiTietHD.FullRowSelect = true;
+            listViewChiTietHD.GridLines = true;
+
+            listViewChiTietHD.Columns.Add("Mã SP", 85);
+            listViewChiTietHD.Columns.Add("Tên SP", 130);
+            listViewChiTietHD.Columns.Add("Đơn giá", 105);
+            listViewChiTietHD.Columns.Add("Số lượng", 60);
+            listViewChiTietHD.Columns.Add("Thành tiền", 110);
+        }
+
+        private void dgvHoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
             {
-                List<Order> orders = orderController.GetAllOrders() ?? new List<Order>();
-                DataTable dt = new DataTable();
-                dt.Columns.Add("MaHD");
-                dt.Columns.Add("TenKH");
-                dt.Columns.Add("TenNV");
-                dt.Columns.Add("TongTien");
-                dt.Columns.Add("NgayTao");
+                var dgv = sender as DataGridView;
+                var row = dgv.Rows[e.RowIndex];
 
-                foreach (var o in orders)
-                {
-                    dt.Rows.Add(o.OrderID, o.CustomerName, o.UserName, o.TotalAmount, o.OrderDate);
-                }
+                string orderId = row.Cells["OrderID"].Value.ToString();
+                string customerId = row.Cells["CustomerID"].Value.ToString();
+                string customerName = row.Cells["CustomerName"].Value.ToString();
+                string userName = row.Cells["UserName"].Value.ToString();
+                DateTime orderDate = Convert.ToDateTime(row.Cells["OrderDate"].Value);
+                decimal total = Convert.ToDecimal(row.Cells["TotalAmount"].Value);
 
-                dtgvHoaDon.AutoGenerateColumns = true;
-                dtgvHoaDon.DataSource = dt;
+                txtMaHD.Text = orderId;
+                txtMaKH.Text = customerId;
+                txtTenKH.Text = customerName;
+                txtTenNV.Text = userName;
+                dtpNgayLap.Value = orderDate;
+                txtThanhTien.Text = total.ToString("N0");
 
-                dtgvHoaDon.Columns["MaHD"].Width = 100;
-                dtgvHoaDon.Columns["TenKH"].Width = 200;
-                dtgvHoaDon.Columns["TenNV"].Width = 200;
-                dtgvHoaDon.Columns["TongTien"].Width = 200;
-                dtgvHoaDon.Columns["NgayTao"].Width = 262;
-            }
-            catch (Exception ex)                
-            {
-                MessageBox.Show($"Lỗi khi tải danh sách hóa đơn: {ex.Message}\nStackTrace: {ex.StackTrace}");
+                loadChiTietHoaDon(orderId);
             }
         }
 
-        private void loadChiTietHoaDon(string maHD)
+
+        private void dtgvHoaDonPart1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(maHD)) return;
 
-                // Convert maHD from string to int before passing it to GetOrderDetailsByOrderID
-                if (!int.TryParse(maHD, out int orderId))
-                {
-                    MessageBox.Show("Mã hóa đơn không hợp lệ.");
-                    return;
-                }
+        }
 
-                List<OrderDetails> details = detailsController.GetOrderDetailsByOrderID(orderId) ?? new List<OrderDetails>();
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
 
-                DataTable dt = new DataTable();
-                dt.Columns.Add("STT");
-                dt.Columns.Add("ProductName");
-                dt.Columns.Add("Quantity");
-                dt.Columns.Add("UnitPrice");
-                dt.Columns.Add("Thành tiền");
-
-                int stt = 1;
-                decimal tongTien = 0;
-
-                foreach (var item in details)
-                {
-                    decimal thanhTien = item.Quantity * item.UnitPrice;
-                    dt.Rows.Add(stt++, item.ProductName, item.Quantity, item.UnitPrice, thanhTien);
-                    tongTien += thanhTien;
-                }
-
-                dtgvChiTietHoaDon.DataSource = dt;
-                txtTongTien.Text = tongTien.ToString("N0");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi tải chi tiết hóa đơn: {ex.Message}");
-            }
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string keyword = txtTimKiem.Text.ToLower();
-                string col = cbTimKiem.SelectedItem.ToString();
+            string keyword = txtTimKiem.Text.Trim().ToLower();
 
-                DataTable dt = (DataTable)dtgvHoaDon.DataSource;
-                DataView dv = dt.DefaultView;
-
-                if (col == "Mã HD")
-                    dv.RowFilter = $"MaHD LIKE '%{keyword}%'";
-                else if (col == "Tên KH")
-                    dv.RowFilter = $"TenKH LIKE '%{keyword}%'";
-                else if (col == "Tên NV")
-                    dv.RowFilter = $"TenNV LIKE '%{keyword}%'";
-            }
-            catch (Exception ex)
+            if (string.IsNullOrEmpty(keyword))
             {
-                MessageBox.Show($"Lỗi khi tìm kiếm: {ex.Message}");
+                loadHoaDon();
+                return;
             }
+
+            OrderController orderController = new OrderController();
+            List<Order> allOrders = orderController.GetAllOrders();
+
+            var filtered = allOrders
+                .Where(o =>
+                    o.OrderID.ToLower().Contains(keyword) ||
+                    o.CustomerName.ToLower().Contains(keyword) ||
+                    o.UserName.ToLower().Contains(keyword)) // Thêm dòng này
+                .ToList();
+
+            dtgvHoaDonPart1.DataSource = filtered;
+            dtgvHoaDonPart2.DataSource = filtered;
+
+            setColumnHeaders(dtgvHoaDonPart1);
+            setColumnHeaders(dtgvHoaDonPart2);
+
+            // Cấu hình lại các cột giống loadHoaDon()
+            dtgvHoaDonPart1.Columns["OrderID"].Width = 50;
+            dtgvHoaDonPart1.Columns["UserName"].Width = 60;
+            dtgvHoaDonPart1.Columns["OrderDate"].Width = 80;
+
+            dtgvHoaDonPart2.Columns["CustomerID"].Width = 60;
+            dtgvHoaDonPart2.Columns["CustomerName"].Width = 70;
+            dtgvHoaDonPart2.Columns["TotalAmount"].Width = 70;
+
+            dtgvHoaDonPart1.Columns["CustomerID"].Visible = false;
+            dtgvHoaDonPart1.Columns["CustomerName"].Visible = false;
+            dtgvHoaDonPart1.Columns["TotalAmount"].Visible = false;
+
+            dtgvHoaDonPart2.Columns["OrderID"].Visible = false;
+            dtgvHoaDonPart2.Columns["UserName"].Visible = false;
+            dtgvHoaDonPart2.Columns["OrderDate"].Visible = false;
+
+            dtgvHoaDonPart1.Columns["UserID"].Visible = false;
+            dtgvHoaDonPart2.Columns["UserID"].Visible = false;
         }
 
-        private void dtgvHoaDon_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnXuatHoaDon_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (e.RowIndex >= 0)
-                {
-                    string maHD = dtgvHoaDon.Rows[e.RowIndex].Cells[0].Value?.ToString();
-                    txtMaHD.Text = maHD;
-                    txtTenKH.Text = dtgvHoaDon.Rows[e.RowIndex].Cells[1].Value?.ToString() ?? "";
-                    txtTenNV.Text = dtgvHoaDon.Rows[e.RowIndex].Cells[2].Value?.ToString() ?? "";
-                    txtTongTien.Text = dtgvHoaDon.Rows[e.RowIndex].Cells[3].Value?.ToString() ?? "0";
-                    dtpNgayTao.Value = Convert.ToDateTime(dtgvHoaDon.Rows[e.RowIndex].Cells[4].Value ?? DateTime.Now);
+            StringBuilder sb = new StringBuilder();
 
-                    tabControl1.SelectedTab = tabPage2;
-                    loadChiTietHoaDon(maHD);
-                }
-            }
-            catch (Exception ex)
+            sb.AppendLine("         CỬA HÀNG VÒNG TAY PHONG THỦY");
+            sb.AppendLine("             *** HÓA ĐƠN BÁN HÀNG ***");
+            sb.AppendLine();
+            sb.AppendLine($"Mã HĐ      : {txtMaHD.Text}");
+            sb.AppendLine($"Khách hàng : {txtTenKH.Text}");
+            sb.AppendLine($"Nhân viên  : {txtTenNV.Text}");
+            sb.AppendLine($"Ngày lập   : {dtpNgayLap.Value:dd/MM/yyyy}");
+            sb.AppendLine(new string('-', 60));
+            sb.AppendLine("Mã SP  | Tên sản phẩm         | Đơn giá  | SL | Thành tiền");
+            sb.AppendLine(new string('-', 60));
+
+            foreach (ListViewItem item in listViewChiTietHD.Items)
             {
-                MessageBox.Show($"Lỗi khi chọn hóa đơn: {ex.Message}");
+                string maSP = item.SubItems[0].Text;
+                string tenSP = item.SubItems[1].Text;
+                string donGia = item.SubItems[2].Text;
+                string soLuong = item.SubItems[3].Text;
+                string thanhTien = item.SubItems[4].Text;
+
+                string tenSPShort = tenSP.Length > 18 ? tenSP.Substring(0, 17) + "…" : tenSP;
+
+                sb.AppendLine(string.Format("{0,-6} | {1,-20} | {2,8}đ | {3,2} | {4,11}đ",
+                    maSP,
+                    tenSPShort,
+                    donGia,
+                    soLuong,
+                    thanhTien));
             }
+
+            sb.AppendLine(new string('-', 60));
+            sb.AppendLine($"TỔNG TIỀN: {txtThanhTien.Text} đ");
+            sb.AppendLine(new string('=', 60));
+            sb.AppendLine("     Cảm ơn quý khách và hẹn gặp lại!");
+
+            var frm = new FXuatHoaDon(sb.ToString());
+            frm.ShowDialog();
         }
 
-        private void btnThemHoaDon_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Order newOrder = new Order
-                {
-                    OrderDate = DateTime.Now,
-                    TotalAmount = 0
-                };
-
-                string newOrderId = orderController.AddOrder(newOrder);
-                if (!string.IsNullOrEmpty(newOrderId))
-                {
-                    MessageBox.Show("Tạo hóa đơn thành công!");
-                    loadDanhSachHoaDon();
-                    txtMaHD.Text = newOrderId;
-
-                    tabControl1.SelectedTab = tabPage2;
-                    loadChiTietHoaDon(newOrderId);
-                }
-                else
-                {
-                    MessageBox.Show("Tạo hóa đơn thất bại!");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi thêm hóa đơn: {ex.Message}");
-            }
-        }
-
-        private void btnThemSP_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Add product to order details
-                // ...
-
-                // After adding product, update total amount
-                if (!int.TryParse(txtMaHD.Text, out int orderId))
-                {
-                    MessageBox.Show("Mã hóa đơn không hợp lệ.");
-                    return;
-                }
-
-                decimal newTotal = detailsController.CalculateTotalByOrder(orderId);
-                orderController.UpdateTotalAmount(orderId.ToString(), newTotal);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi thêm sản phẩm: {ex.Message}");
-            }
-        }
-
-        private void dtgvHoaDon_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void btnLuuHoaDon_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Save order details
-                // ...
-
-                // After saving order details, update total amount
-                if (!int.TryParse(txtMaHD.Text, out int orderId))
-                {
-                    MessageBox.Show("Mã hóa đơn không hợp lệ.");
-                    return;
-                }
-
-                decimal newTotal = detailsController.CalculateTotalByOrder(orderId);
-                orderController.UpdateTotalAmount(orderId.ToString(), newTotal);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi lưu hóa đơn: {ex.Message}");
-            }
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tabControl1.SelectedTab == tabPage1)
-            {
-                loadDanhSachHoaDon();
-            }
-            else if (tabControl1.SelectedTab == tabPage2 && !string.IsNullOrEmpty(txtMaHD.Text))
-            {
-                loadChiTietHoaDon(txtMaHD.Text);
-            }
-        }
-
-        private void cbTimKiem_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -30,135 +30,133 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FMain));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnThongKe = new System.Windows.Forms.Button();
+            this.btnKhachHang = new System.Windows.Forms.Button();
             this.btnHoaDon = new System.Windows.Forms.Button();
             this.btnSanPham = new System.Windows.Forms.Button();
-            this.panelDisplayForm = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblThongTinTrang = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.picClose = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblTrangChu = new System.Windows.Forms.Label();
+            this.panelContainer = new System.Windows.Forms.Panel();
+            this.pbClose = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.btnThongKe);
+            this.panel1.Controls.Add(this.btnKhachHang);
             this.panel1.Controls.Add(this.btnHoaDon);
             this.panel1.Controls.Add(this.btnSanPham);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(314, 960);
+            this.panel1.Size = new System.Drawing.Size(168, 540);
             this.panel1.TabIndex = 0;
+            // 
+            // btnThongKe
+            // 
+            this.btnThongKe.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongKe.Location = new System.Drawing.Point(3, 425);
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.Size = new System.Drawing.Size(162, 59);
+            this.btnThongKe.TabIndex = 3;
+            this.btnThongKe.Text = "THỐNG KÊ";
+            this.btnThongKe.UseVisualStyleBackColor = true;
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
+            // 
+            // btnKhachHang
+            // 
+            this.btnKhachHang.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKhachHang.Location = new System.Drawing.Point(3, 134);
+            this.btnKhachHang.Name = "btnKhachHang";
+            this.btnKhachHang.Size = new System.Drawing.Size(162, 59);
+            this.btnKhachHang.TabIndex = 2;
+            this.btnKhachHang.Text = "KHÁCH HÀNG";
+            this.btnKhachHang.UseVisualStyleBackColor = true;
+            this.btnKhachHang.Click += new System.EventHandler(this.btnKhachHang_Click);
             // 
             // btnHoaDon
             // 
-            this.btnHoaDon.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHoaDon.Image = ((System.Drawing.Image)(resources.GetObject("btnHoaDon.Image")));
-            this.btnHoaDon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHoaDon.Location = new System.Drawing.Point(46, 493);
+            this.btnHoaDon.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHoaDon.Location = new System.Drawing.Point(3, 331);
             this.btnHoaDon.Name = "btnHoaDon";
-            this.btnHoaDon.Size = new System.Drawing.Size(223, 69);
-            this.btnHoaDon.TabIndex = 2;
+            this.btnHoaDon.Size = new System.Drawing.Size(162, 59);
+            this.btnHoaDon.TabIndex = 1;
             this.btnHoaDon.Text = "HOÁ ĐƠN";
-            this.btnHoaDon.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnHoaDon.UseVisualStyleBackColor = true;
-            this.btnHoaDon.Click += new System.EventHandler(this.btnHoaDon_Click);
+            this.btnHoaDon.Click += new System.EventHandler(this.btnHoaDon_Click_1);
             // 
             // btnSanPham
             // 
-            this.btnSanPham.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSanPham.Image = ((System.Drawing.Image)(resources.GetObject("btnSanPham.Image")));
-            this.btnSanPham.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSanPham.Location = new System.Drawing.Point(46, 253);
+            this.btnSanPham.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSanPham.Location = new System.Drawing.Point(3, 233);
             this.btnSanPham.Name = "btnSanPham";
-            this.btnSanPham.Size = new System.Drawing.Size(223, 69);
-            this.btnSanPham.TabIndex = 1;
+            this.btnSanPham.Size = new System.Drawing.Size(162, 59);
+            this.btnSanPham.TabIndex = 0;
             this.btnSanPham.Text = "SẢN PHẨM";
-            this.btnSanPham.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSanPham.UseVisualStyleBackColor = true;
-            this.btnSanPham.Click += new System.EventHandler(this.btnSanPham_Click);
-            // 
-            // panelDisplayForm
-            // 
-            this.panelDisplayForm.Location = new System.Drawing.Point(320, 89);
-            this.panelDisplayForm.Name = "panelDisplayForm";
-            this.panelDisplayForm.Size = new System.Drawing.Size(1597, 986);
-            this.panelDisplayForm.TabIndex = 2;
-            this.panelDisplayForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panelDisplayForm_Paint);
+            this.btnSanPham.Click += new System.EventHandler(this.btnSanPham_Click_1);
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.lblThongTinTrang);
-            this.panel2.Controls.Add(this.panel3);
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.Controls.Add(this.pbClose);
+            this.panel2.Controls.Add(this.lblTrangChu);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(314, 0);
+            this.panel2.Location = new System.Drawing.Point(168, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1406, 83);
-            this.panel2.TabIndex = 3;
+            this.panel2.Size = new System.Drawing.Size(792, 63);
+            this.panel2.TabIndex = 1;
             // 
-            // lblThongTinTrang
+            // lblTrangChu
             // 
-            this.lblThongTinTrang.AutoSize = true;
-            this.lblThongTinTrang.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThongTinTrang.Location = new System.Drawing.Point(6, 27);
-            this.lblThongTinTrang.Name = "lblThongTinTrang";
-            this.lblThongTinTrang.Size = new System.Drawing.Size(258, 46);
-            this.lblThongTinTrang.TabIndex = 1;
-            this.lblThongTinTrang.Text = "TRANG CHỦ";
+            this.lblTrangChu.AutoSize = true;
+            this.lblTrangChu.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrangChu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTrangChu.Location = new System.Drawing.Point(6, 21);
+            this.lblTrangChu.Name = "lblTrangChu";
+            this.lblTrangChu.Size = new System.Drawing.Size(194, 41);
+            this.lblTrangChu.TabIndex = 0;
+            this.lblTrangChu.Text = "TRANG CHỦ";
             // 
-            // panel3
+            // panelContainer
             // 
-            this.panel3.Controls.Add(this.picClose);
-            this.panel3.Location = new System.Drawing.Point(1094, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(300, 100);
-            this.panel3.TabIndex = 0;
+            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContainer.Location = new System.Drawing.Point(168, 63);
+            this.panelContainer.Name = "panelContainer";
+            this.panelContainer.Size = new System.Drawing.Size(792, 477);
+            this.panelContainer.TabIndex = 2;
+            this.panelContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
-            // picClose
+            // pbClose
             // 
-            this.picClose.Image = ((System.Drawing.Image)(resources.GetObject("picClose.Image")));
-            this.picClose.Location = new System.Drawing.Point(235, 3);
-            this.picClose.Name = "picClose";
-            this.picClose.Size = new System.Drawing.Size(56, 50);
-            this.picClose.TabIndex = 0;
-            this.picClose.TabStop = false;
-            this.picClose.Click += new System.EventHandler(this.picClose_Click);
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(46, 374);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(223, 69);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "KHÁCH HÀNG";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.pbClose.ErrorImage = null;
+            this.pbClose.Image = ((System.Drawing.Image)(resources.GetObject("pbClose.Image")));
+            this.pbClose.InitialImage = null;
+            this.pbClose.Location = new System.Drawing.Point(740, 12);
+            this.pbClose.Name = "pbClose";
+            this.pbClose.Size = new System.Drawing.Size(40, 45);
+            this.pbClose.TabIndex = 1;
+            this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
             // 
             // FMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1720, 960);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(960, 540);
+            this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panelDisplayForm);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FMain";
+            this.Load += new System.EventHandler(this.FMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbClose)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -166,14 +164,14 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panelDisplayForm;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox picClose;
-        private System.Windows.Forms.Button btnSanPham;
-        private System.Windows.Forms.Label lblThongTinTrang;
+        private System.Windows.Forms.Button btnKhachHang;
         private System.Windows.Forms.Button btnHoaDon;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSanPham;
+        private System.Windows.Forms.Panel panelContainer;
+        private System.Windows.Forms.Button btnThongKe;
+        private System.Windows.Forms.Label lblTrangChu;
+        private System.Windows.Forms.PictureBox pbClose;
     }
 }
 

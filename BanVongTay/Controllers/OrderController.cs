@@ -32,7 +32,7 @@ namespace BanVongTay.Controllers
             }
 
             maxNumber++;
-            return prefix + maxNumber.ToString("D3"); // HD001, HD002, ...
+            return prefix + maxNumber.ToString("D3");
         }
 
         public List<Order> GetAllOrders()

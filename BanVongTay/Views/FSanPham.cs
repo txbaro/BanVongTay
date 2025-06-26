@@ -48,10 +48,15 @@ namespace BanVongTay.Views
 
             dtgvDSSP.DataSource = db.ExecuteQuery(query);
 
-            dtgvDSSP.Columns["ProductID"].Width = 80;
-            dtgvDSSP.Columns["ProductName"].Width = 200;
-            dtgvDSSP.Columns["Price"].Width = 90;
+            dtgvDSSP.Columns["ProductID"].Width = 100;
+            dtgvDSSP.Columns["ProductName"].Width = 250;
+            dtgvDSSP.Columns["CategoryName"].Width = 200;
+            dtgvDSSP.Columns["Price"].Width = 92;
             dtgvDSSP.Columns["Quantity"].Width = 75;
+            dtgvDSSP.Columns["ImageURL"].Visible = false;
+            dtgvDSSP.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            dtgvDSSP.Font = new Font("Segoe UI", 10F);
+
         }
 
         private void loadSearchOption()
@@ -303,6 +308,11 @@ namespace BanVongTay.Views
         }
 
         private void txtImagePath_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
         {
 
         }

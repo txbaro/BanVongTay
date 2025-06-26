@@ -25,3 +25,4 @@ C:\VLU\BanVongTay\BanVongTay\bin\Debug\BanVongTay.exe.config
 C:\VLU\BanVongTay\BanVongTay\bin\Debug\BanVongTay.exe
 C:\VLU\BanVongTay\BanVongTay\bin\Debug\BanVongTay.pdb
 C:\VLU\BanVongTay\BanVongTay\obj\Debug\BanVongTay.Views.FHoaDon.resources
+C:\VLU\BanVongTay\BanVongTay\obj\Debug\BanVongTay.Views.FXuatHoaDon.resources

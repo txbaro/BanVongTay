@@ -80,6 +80,12 @@
     <Compile Include="Views\FSanPham.Designer.cs">
       <DependentUpon>FSanPham.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FXuatHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FXuatHoaDon.Designer.cs">
+      <DependentUpon>FXuatHoaDon.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FSanPham.resx">
       <DependentUpon>FSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FXuatHoaDon.resx">
+      <DependentUpon>FXuatHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
