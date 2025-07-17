@@ -7,6 +7,7 @@ namespace BanVongTay.Controllers
 {
     public class ConnectDB
     {
+        //đổi cái (localdb)\\MSSQLLocalDB thành cái server name trong mssql trên máy m
         private readonly string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=BraceletShop;Trusted_Connection=True;";
         private SqlConnection connection;
 
