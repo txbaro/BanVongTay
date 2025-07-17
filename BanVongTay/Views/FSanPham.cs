@@ -54,7 +54,6 @@ namespace BanVongTay.Views
             dtgvDSSP.Columns["Price"].Width = 92;
             dtgvDSSP.Columns["Quantity"].Width = 75;
             dtgvDSSP.Columns["ImageURL"].Visible = false;
-            dtgvDSSP.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             dtgvDSSP.Font = new Font("Segoe UI", 10F);
 
         }
@@ -284,7 +283,6 @@ namespace BanVongTay.Views
                     whereClause = $"p.CategoryName LIKE N'%{keyword}%'";
                     break;
                 default:
-                    // Tìm tất cả các cột
                     whereClause = $@"
                 p.ProductID LIKE N'%{keyword}%' OR
                 p.ProductName LIKE N'%{keyword}%' OR

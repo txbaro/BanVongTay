@@ -99,5 +99,26 @@ namespace BanVongTay.Controllers
             object result = db.ExecuteScalar(query, parameters);
             return result != DBNull.Value ? Convert.ToDecimal(result) : 0m;
         }
+
+        public string GenerateNewOrderDetailID()
+        {
+            string prefix = "OD";
+            int maxNumber = 0;
+
+            string query = @"
+        SELECT MAX(CAST(SUBSTRING(OrderDetailID, 3, LEN(OrderDetailID) - 2) AS INT))
+        FROM OrderDetails
+        WHERE OrderDetailID LIKE 'OD%'";
+
+            object result = db.ExecuteScalar(query);
+
+            if (result != null && result != DBNull.Value)
+            {
+                maxNumber = Convert.ToInt32(result);
+            }
+
+            maxNumber++;
+            return prefix + maxNumber.ToString("D2");
+        }
     }
 }

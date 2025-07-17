@@ -45,17 +45,14 @@ namespace BanVongTay.Views
             dtgvHoaDonPart2.Columns["CustomerName"].Width = 70;
             dtgvHoaDonPart2.Columns["TotalAmount"].Width = 70;
 
-            // Ẩn cột ở bảng 1: chỉ để lại Mã HD, Tên NV, Ngày lập
             dtgvHoaDonPart1.Columns["CustomerID"].Visible = false;
             dtgvHoaDonPart1.Columns["CustomerName"].Visible = false;
             dtgvHoaDonPart1.Columns["TotalAmount"].Visible = false;
 
-            // Ẩn cột ở bảng 2: chỉ để lại Mã KH, Tên KH, Thành tiền
             dtgvHoaDonPart2.Columns["OrderID"].Visible = false;
             dtgvHoaDonPart2.Columns["UserName"].Visible = false;
             dtgvHoaDonPart2.Columns["OrderDate"].Visible = false;
 
-            // Ẩn thêm các cột phụ
             dtgvHoaDonPart1.Columns["UserID"].Visible = false;
             dtgvHoaDonPart2.Columns["UserID"].Visible = false;
         }
@@ -164,7 +161,7 @@ namespace BanVongTay.Views
                 .Where(o =>
                     o.OrderID.ToLower().Contains(keyword) ||
                     o.CustomerName.ToLower().Contains(keyword) ||
-                    o.UserName.ToLower().Contains(keyword)) // Thêm dòng này
+                    o.UserName.ToLower().Contains(keyword))
                 .ToList();
 
             dtgvHoaDonPart1.DataSource = filtered;
@@ -173,7 +170,6 @@ namespace BanVongTay.Views
             setColumnHeaders(dtgvHoaDonPart1);
             setColumnHeaders(dtgvHoaDonPart2);
 
-            // Cấu hình lại các cột giống loadHoaDon()
             dtgvHoaDonPart1.Columns["OrderID"].Width = 50;
             dtgvHoaDonPart1.Columns["UserName"].Width = 60;
             dtgvHoaDonPart1.Columns["OrderDate"].Width = 80;

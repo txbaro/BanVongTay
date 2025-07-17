@@ -41,12 +41,12 @@ namespace BanVongTay.Controllers
             try
             {
                 string query = @"
-                    SELECT o.OrderID, o.CustomerID, o.UserID, o.OrderDate, o.TotalAmount,
-                           (c.FirstName + ' ' + c.LastName) AS CustomerName,
-                           (u.FirstName + ' ' + u.LastName) AS UserName
-                    FROM Orders o
-                    JOIN Customers c ON o.CustomerID = c.CustomerID
-                    JOIN Users u ON o.UserID = u.UserID";
+    SELECT o.OrderID, o.CustomerID, o.UserID, o.OrderDate, o.TotalAmount,
+           c.Name AS CustomerName,
+           (u.FirstName + ' ' + u.LastName) AS UserName
+    FROM Orders o
+    JOIN Customers c ON o.CustomerID = c.CustomerID
+    JOIN Users u ON o.UserID = u.UserID";
 
                 DataTable dt = db.ExecuteQuery(query);
 
@@ -64,7 +64,7 @@ namespace BanVongTay.Controllers
                     };
                     list.Add(o);
                 }
-            }
+            }   
             catch (Exception ex)
             {
                 throw new Exception($"Lỗi khi lấy danh sách hóa đơn: {ex.Message}");

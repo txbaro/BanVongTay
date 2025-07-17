@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BanVongTay.Models
 {
-    internal class Users
+    internal class Customer
     {
+        public string Name { get; set; }
     }
 }

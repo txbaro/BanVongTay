@@ -16,6 +16,8 @@ namespace BanVongTay
 {
     public partial class FMain : Form
     {
+        private User currentUser;
+
         public FMain()
         {
             InitializeComponent();
@@ -23,16 +25,30 @@ namespace BanVongTay
 
         }
 
-        private void LoadFormIntoPanel(Form form) //Load Form Ở đây
+        public FMain(User user)
+        {
+            InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            currentUser = user;
+            LoadUserInfo();
+        }
+
+        private void LoadUserInfo()
+        {
+            lblName.Text = currentUser.LastName;
+            lblRole.Text = currentUser.Role;
+        }
+
+        private void LoadFormIntoPanel(Form form)
         {
             if (panelContainer.Controls.Count > 0)
                 panelContainer.Controls[0].Dispose();
 
-            form.TopLevel = false; // Quan trọng: để form chạy như control
+            form.TopLevel = false; 
             form.FormBorderStyle = FormBorderStyle.None;
-            form.Dock = DockStyle.Fill; // Cho vừa khít panel
+            form.Dock = DockStyle.Fill; 
 
-            panelContainer.Controls.Add(form);  // tham chiếu
+            panelContainer.Controls.Add(form); 
             panelContainer.Tag = form;
             form.Show();
         }
@@ -89,7 +105,7 @@ namespace BanVongTay
 
         private void btnSanPham_Click_1(object sender, EventArgs e)
         {
-            FSanPham form = new FSanPham(); // Gọi form mấy ông muốn nhảy qua 
+            FSanPham form = new FSanPham();
             LoadFormIntoPanel(form);
             lblTrangChu.Text = "SẢN PHẨM";
         }
@@ -103,17 +119,21 @@ namespace BanVongTay
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
+            FKhachHang form = new FKhachHang(); // Gọi form mấy ông muốn nhảy qua 
+            LoadFormIntoPanel(form);
             lblTrangChu.Text = "KHÁCH HÀNG";
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
+            FThongKe form = new FThongKe(); // Gọi form mấy ông muốn nhảy qua
             lblTrangChu.Text = "THỐNG KÊ";
+            LoadFormIntoPanel(form);
         }
 
         private void pbClose_Click(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
         }
     }
 }

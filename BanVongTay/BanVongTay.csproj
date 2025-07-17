@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,7 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ConnectDB.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\OrderDetailsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -56,10 +59,11 @@
     <Compile Include="FMain.Designer.cs">
       <DependentUpon>FMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Products.cs" />
-    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\FHoaDon.cs">
@@ -74,11 +78,23 @@
     <Compile Include="Views\FKhachHang.Designer.cs">
       <DependentUpon>FKhachHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\FLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FLogin.Designer.cs">
+      <DependentUpon>FLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\FSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\FSanPham.Designer.cs">
       <DependentUpon>FSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FThongKe.Designer.cs">
+      <DependentUpon>FThongKe.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FXuatHoaDon.cs">
       <SubType>Form</SubType>
@@ -97,6 +113,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Views\FHoaDon.resx">
       <DependentUpon>FHoaDon.cs</DependentUpon>
@@ -104,8 +121,14 @@
     <EmbeddedResource Include="Views\FKhachHang.resx">
       <DependentUpon>FKhachHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\FLogin.resx">
+      <DependentUpon>FLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\FSanPham.resx">
       <DependentUpon>FSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FThongKe.resx">
+      <DependentUpon>FThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FXuatHoaDon.resx">
       <DependentUpon>FXuatHoaDon.cs</DependentUpon>
@@ -123,6 +146,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\ic_close_40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\z6806619672314_468403b66f733fcef1c161e8ec86fa69.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnThemHoaDon = new System.Windows.Forms.Button();
             this.dtgvHoaDonPart2 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.dtpNgayLap = new System.Windows.Forms.DateTimePicker();
@@ -57,16 +56,6 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvHoaDonPart1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnThemHoaDon
-            // 
-            this.btnThemHoaDon.Font = new System.Drawing.Font("Segoe UI", 7.8F);
-            this.btnThemHoaDon.Location = new System.Drawing.Point(694, 530);
-            this.btnThemHoaDon.Name = "btnThemHoaDon";
-            this.btnThemHoaDon.Size = new System.Drawing.Size(133, 39);
-            this.btnThemHoaDon.TabIndex = 36;
-            this.btnThemHoaDon.Text = "THÊM HOÁ ĐƠN";
-            this.btnThemHoaDon.UseVisualStyleBackColor = true;
             // 
             // dtgvHoaDonPart2
             // 
@@ -315,7 +304,6 @@
             this.ClientSize = new System.Drawing.Size(1069, 592);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.btnXuatHoaDon);
-            this.Controls.Add(this.btnThemHoaDon);
             this.Controls.Add(this.dtgvHoaDonPart2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dtgvHoaDonPart1);
@@ -335,8 +323,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnThemHoaDon;
         private System.Windows.Forms.DataGridView dtgvHoaDonPart2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpNgayLap;

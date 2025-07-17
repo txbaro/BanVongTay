@@ -1,176 +1,203 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using BanVongTay.Controllers;
 
 namespace BanVongTay
 {
     public partial class FThongKe : Form
     {
-        private readonly string strconnec = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=BraceletShop;Integrated Security=True";
+        private readonly ConnectDB db = new ConnectDB();
 
         public FThongKe()
         {
             InitializeComponent();
+            InitUI();
         }
 
         private void FThongKe_Load(object sender, EventArgs e)
         {
-            SetupFormAppearance();
-            SetupListView();
-            LoadNamComboBox();
-        }
-
-        #region Cài đặt giao diện
-
-        private void SetupFormAppearance()
-        {
-            this.Text = "Thống Kê Doanh Thu Bán Hàng";
-            this.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.MaximizeBox = false;
-        }
-
-        private void SetupListView()
-        {
-            lvDoanhThu.View = View.Details;
-            lvDoanhThu.GridLines = true;
-            lvDoanhThu.FullRowSelect = true;
-            lvDoanhThu.Font = new Font("Segoe UI", 11F, FontStyle.Regular);
-
-            lvDoanhThu.OwnerDraw = true;
-
-            lvDoanhThu.Columns.Clear();
-            lvDoanhThu.Columns.Add("Tháng", 150, HorizontalAlignment.Left);
-            lvDoanhThu.Columns.Add("Tổng Doanh Thu (VNĐ)", -2, HorizontalAlignment.Left);
-        }
-
-        #endregion
-
-        #region Xử lý dữ liệu
-
-        private void LoadNamComboBox()
-        {
-            string query = "SELECT DISTINCT YEAR(NgayBan) AS Nam FROM HoaDon_ThongKe ORDER BY Nam DESC;";
-            using (SqlConnection connection = new SqlConnection(strconnec))
+            LoadYearsToComboBox();
+            if (cboNam.Items.Count > 0 && int.TryParse(cboNam.SelectedItem.ToString(), out int selectedYear))
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                LoadRevenueData(selectedYear);
+            }
+            cboNam.SelectedIndexChanged += cboNam_SelectedIndexChanged;
+        }
+
+        private void InitUI()
+        {
+            Text = "Thống Kê Doanh Thu Bán Hàng";
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
+            Font = new Font("Segoe UI", 10F);
+
+            InitChart();
+        }
+
+        private void InitChart()
+        {
+            chartDoanhThu.Series.Clear();
+            chartDoanhThu.ChartAreas.Clear();
+
+            ChartArea area = new ChartArea("ChartArea")
+            {
+                AxisX = { Title = "Tháng", Interval = 1 },
+                AxisY = { Title = "Doanh thu (VNĐ)" }
+            };
+            area.AxisY.LabelStyle.Format = "#,##0";
+            chartDoanhThu.ChartAreas.Add(area);
+
+            chartDoanhThu.Titles.Clear();
+            chartDoanhThu.Titles.Add("Biểu đồ doanh thu theo tháng");
+        }
+
+        private void LoadYearOptions()
+        {
+            const string query = "SELECT DISTINCT YEAR(OrderDate) AS Nam FROM Orders ORDER BY Nam DESC";
+            try
+            {
+                DataTable dt = db.ExecuteQuery(query);
+                cboNam.Items.Clear();
+
+                foreach (DataRow row in dt.Rows)
+                    cboNam.Items.Add(row["Nam"].ToString());
+
+                if (cboNam.Items.Count > 0)
+                    cboNam.SelectedIndex = 0;
+                else
+                    MessageBox.Show("Không có dữ liệu thống kê!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                ShowError("Lỗi khi tải danh sách năm", ex);
+            }
+        }
+
+        private void LoadRevenueData(int year, int? month = null)
+        {
+            string query = @"
+        SELECT 
+            MONTH(OrderDate) AS Thang, 
+            SUM(TotalAmount) AS DoanhThu
+        FROM Orders
+        WHERE YEAR(OrderDate) = @Nam";
+
+            var parameters = new Dictionary<string, object> { { "@Nam", year } };
+
+            if (month.HasValue)
+            {
+                query += " AND MONTH(OrderDate) = @Thang";
+                parameters.Add("@Thang", month.Value);
+            }
+
+            query += " GROUP BY MONTH(OrderDate) ORDER BY Thang";
+
+            try
+            {
+                DataTable dt = db.ExecuteQuery(query, parameters);
+
+                if (dt.Rows.Count == 0)
                 {
-                    try
+                    chartDoanhThu.Series.Clear();
+                    lblTongDoanhThu.Text = "Tổng doanh thu: 0 VNĐ";
+                    MessageBox.Show("Không có doanh thu trong khoảng đã chọn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    RenderChart(dt);
+
+                    decimal total = 0;
+                    foreach (DataRow row in dt.Rows)
                     {
-                        connection.Open();
-                        SqlDataReader reader = command.ExecuteReader();
-                        cboNam.Items.Clear();
-                        while (reader.Read())
-                        {
-                            cboNam.Items.Add(reader["Nam"].ToString());
-                        }
-                        if (cboNam.Items.Count > 0)
-                        {
-                            cboNam.SelectedIndex = 0;
-                            btnThongKe_Click(null, null);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không tìm thấy dữ liệu thống kê.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            btnThongKe.Enabled = false;
-                        }
+                        total += Convert.ToDecimal(row["DoanhThu"]);
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Lỗi khi tải dữ liệu năm:\n" + ex.Message, "Lỗi Cơ Sở Dữ Liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    lblTongDoanhThu.Text = "Tổng doanh thu: " + total.ToString("N0") + " VNĐ";
                 }
             }
+            catch (Exception ex)
+            {
+                ShowError("Lỗi khi thống kê doanh thu", ex);
+            }
+        }
+
+        private void RenderChart(DataTable data)
+        {
+            chartDoanhThu.Series.Clear();
+
+            Series series = new Series("DoanhThu")
+            {
+                ChartType = SeriesChartType.Column,
+                IsValueShownAsLabel = true,
+                Color = Color.SteelBlue
+            };
+
+            foreach (DataRow row in data.Rows)
+            {
+                int month = Convert.ToInt32(row["Thang"]);
+                decimal revenue = Convert.ToDecimal(row["DoanhThu"]);
+                series.Points.AddXY($"Tháng {month}", revenue);
+            }
+
+            chartDoanhThu.Series.Add(series);
         }
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
             if (cboNam.SelectedItem == null)
             {
-                MessageBox.Show("Vui lòng chọn một năm để thực hiện thống kê.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Vui lòng chọn năm để thống kê!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            int selectedYear = int.Parse(cboNam.SelectedItem.ToString());
-            LoadAndDisplayRevenueData(selectedYear);
+
+            if (int.TryParse(cboNam.SelectedItem.ToString(), out int selectedYear))
+            {
+                LoadRevenueData(selectedYear);
+            }
         }
 
-        private void LoadAndDisplayRevenueData(int year)
+        private void cboNam_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataTable revenueData = new DataTable();
-            string query = @"
-                SELECT 
-                    MONTH(NgayBan) AS Thang, 
-                    SUM(TongTien) AS DoanhThu
-                FROM HoaDon_ThongKe
-                WHERE YEAR(NgayBan) = @Nam
-                GROUP BY MONTH(NgayBan)
-                ORDER BY Thang;";
-            using (SqlConnection connection = new SqlConnection(strconnec))
+            if (int.TryParse(cboNam.SelectedItem?.ToString(), out int selectedYear))
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                LoadRevenueData(selectedYear);
+            }
+        }
+
+        private void LoadYearsToComboBox()
+        {
+            string query = "SELECT DISTINCT YEAR(OrderDate) AS Nam FROM Orders ORDER BY Nam DESC";
+            try
+            {
+                DataTable dt = db.ExecuteQuery(query);
+                cboNam.Items.Clear();
+
+                foreach (DataRow row in dt.Rows)
+                    cboNam.Items.Add(row["Nam"].ToString());
+
+                if (cboNam.Items.Count > 0)
                 {
-                    command.Parameters.AddWithValue("@Nam", year);
-                    try
-                    {
-                        connection.Open();
-                        SqlDataAdapter adapter = new SqlDataAdapter(command);
-                        adapter.Fill(revenueData);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Lỗi khi tải dữ liệu doanh thu:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                    cboNam.SelectedIndexChanged += cboNam_SelectedIndexChanged; 
+                    cboNam.SelectedIndex = 0; 
+                }
+                else
+                {
+                    MessageBox.Show("Không có dữ liệu thống kê!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            DisplayDataOnListView(revenueData);
-        }
-
-        private void DisplayDataOnListView(DataTable data)
-        {
-            lvDoanhThu.Items.Clear();
-            foreach (DataRow row in data.Rows)
+            catch (Exception ex)
             {
-                string thang = $"Tháng {row["Thang"]}";
-                ListViewItem item = new ListViewItem(thang);
-                decimal doanhThu = Convert.ToDecimal(row["DoanhThu"]);
-                item.SubItems.Add(doanhThu.ToString("N0"));
-                lvDoanhThu.Items.Add(item);
+                ShowError("Lỗi khi tải danh sách năm", ex);
             }
         }
 
-        #endregion
-
-        #region Xử lý vẽ lại ListView để căn giữa
-
-        // SỬA ĐỔI: Thêm sự kiện DrawItem để xử lý cột đầu tiên
-        // Hàm này được gọi để vẽ từng dòng (bao gồm cột đầu tiên)
-        private void LvDoanhThu_DrawItem(object sender, DrawListViewItemEventArgs e)
+        private void ShowError(string title, Exception ex)
         {
-            // Yêu cầu hệ thống tự vẽ dòng này theo kiểu mặc định trước.
-            // Thao tác này sẽ vẽ nền và nội dung căn trái cho cả dòng.
-            e.DrawDefault = true;
+            MessageBox.Show($"{title}:\n{ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        // SỬA ĐỔI: Sửa lại DrawSubItem để xử lý tất cả các cột
-        private void LvDoanhThu_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
-        {
-            // Định dạng căn lề: Căn giữa theo chiều ngang và chiều dọc
-            TextFormatFlags flags = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter;
-
-            // Vẽ lại nội dung của ô với định dạng đã chọn
-            // Ghi đè lên nội dung được vẽ mặc định bởi DrawItem
-            e.DrawText(flags);
-        }
-
-        private void LvDoanhThu_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
-        {
-            e.DrawDefault = true;
-        }
-
-        #endregion
     }
 }
