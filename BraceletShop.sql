@@ -26,6 +26,21 @@ CREATE TABLE Customers (
     Address NVARCHAR(200)
 );
 
+CREATE TABLE Products (
+    ProductID VARCHAR(10) PRIMARY KEY,
+    ProductName NVARCHAR(100) NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    ImageURL NVARCHAR(255),
+    CategoryName NVARCHAR(100)
+);
+
+CREATE TABLE Storage (
+    ProductID VARCHAR(10) PRIMARY KEY,
+    Quantity INT NOT NULL,
+
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
 CREATE TABLE Orders (
     OrderID VARCHAR(10) PRIMARY KEY,
     CustomerID VARCHAR(10),
@@ -37,14 +52,6 @@ CREATE TABLE Orders (
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
-CREATE TABLE Products (
-    ProductID VARCHAR(10) PRIMARY KEY,
-    ProductName NVARCHAR(100) NOT NULL,
-    Price DECIMAL(10, 2) NOT NULL,
-    ImageURL NVARCHAR(255),
-    CategoryName NVARCHAR(100)
-);
-
 CREATE TABLE OrderDetails (
     OrderDetailID VARCHAR(10) PRIMARY KEY,
     OrderID VARCHAR(10),
@@ -54,13 +61,6 @@ CREATE TABLE OrderDetails (
     Total AS (Quantity * UnitPrice) PERSISTED,
 
     FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
-    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
-);
-
-CREATE TABLE Storage (
-    ProductID VARCHAR(10) PRIMARY KEY,
-    Quantity INT NOT NULL,
-
     FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
 
